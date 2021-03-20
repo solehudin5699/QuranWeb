@@ -25,6 +25,8 @@ import {
   Search as SearchIcon,
 } from '@material-ui/icons';
 import { surat } from './surat';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './pages/Home/Index';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -137,7 +139,6 @@ export default function Drawer() {
               style={{ flex: 0.9 }}
             >
               <Input
-                id="input-with-icon-adornment"
                 placeholder="Cari surat"
                 className={classes.inputSearch}
                 disableUnderline
@@ -170,32 +171,11 @@ export default function Drawer() {
         </SwipeableDrawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-
-          {[...Array(10)].map((_) => {
-            return (
-              <Card
-                style={{
-                  marginBottom: '10px',
-                  borderRadius: '15px',
-                  padding: '5px',
-                }}
-              >
-                <CardContent>
-                  <Typography paragraph>
-                    فَالْمُغِيرَاتِ صُبْحًا Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Rhoncus dolor
-                    purus non enim praesent elementum facilisis leo vel. Risus
-                    at ultrices mi tempus imperdiet. Semper risus in hendrerit
-                    gravida rutrum quisque non tellus. Convallis convallis
-                    tellus id interdum velit laoreet id donec ultrices. Odio
-                    morbi quis commodo odio aenean sed adipiscing. Amet nisl
-                    suscipit adipiscing bibendum est ultricies
-                  </Typography>
-                </CardContent>
-              </Card>
-            );
-          })}
+          <Router>
+            <div>
+              <Route exact path="/" component={Home} />
+            </div>
+          </Router>
         </main>
       </React.Fragment>
     </div>
