@@ -32,7 +32,6 @@ export default function Index() {
         <Grid item xs={6} sm={4} container justify="center" align="center">
           <Card
             className={classes.containerMenu}
-            button
             onClick={() => history.push('al-quran')}
           >
             <CardContent>
@@ -41,14 +40,20 @@ export default function Index() {
           </Card>
         </Grid>
         <Grid item xs={6} sm={4} container justify="center" align="center">
-          <Card className={classes.containerMenu}>
+          <Card
+            className={classes.containerMenu}
+            onClick={() => history.push('hadist')}
+          >
             <CardContent>
               <Typography className={classes.menuItem}>Hadist</Typography>
             </CardContent>
           </Card>
         </Grid>
         <Grid item xs={6} sm={4} container justify="center" align="center">
-          <Card className={classes.containerMenu}>
+          <Card
+            className={classes.containerMenu}
+            onClick={() => history.push('doa')}
+          >
             <CardContent>
               <Typography className={classes.menuItem}>Do'a</Typography>
             </CardContent>
