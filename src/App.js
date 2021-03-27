@@ -27,6 +27,8 @@ import {
 import { surat } from './surat';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './pages/Home/Index';
+import AlQuran from './pages/AlQuran/Index';
+import Surat from './pages/Surat/Index';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -174,9 +176,18 @@ export default function Drawer() {
           <Router>
             <div>
               <Route exact path="/" component={Home} />
+              <Route exact path="/al-quran" component={AlQuran} />
+              <Route path="/al-quran/:surat" component={Surat} />
             </div>
           </Router>
         </main>
+        <Router>
+          <div>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/al-quran" component={AlQuran} />
+            <Route path="/al-quran/:surat" component={Surat} />
+          </div>
+        </Router>
       </React.Fragment>
     </div>
   );
