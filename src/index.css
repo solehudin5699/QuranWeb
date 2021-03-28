@@ -33,3 +33,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: 'Amiri Bold';
+  src: url('./assets/fonts/Amiri-Bold.ttf');
+}
+@font-face {
+  font-family: 'Amiri Bold Italic';
+  src: url('./assets/fonts/Amiri-BoldItalic.ttf');
+}
+@font-face {
+  font-family: 'Amiri Italic';
+  src: url('./assets/fonts/Amiri-Italic.ttf');
+}
+@font-face {
+  font-family: 'Amiri Regular';
+  src: url('./assets/fonts/Amiri-Regular.ttf');
+}
