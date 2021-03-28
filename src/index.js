@@ -4,10 +4,22 @@ import './index.css';
 import AppRouter from './AppRouter';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux"
+import {PersistGate} from "redux-persist/integration/react"
+import {store, persistor} from "./redux/store"
 
+const App=()=>{
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <AppRouter/>
+      </PersistGate>
+    </Provider>
+  )
+}
 ReactDOM.render(
   <React.StrictMode>
-    <AppRouter />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

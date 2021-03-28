@@ -5,8 +5,7 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import PageContent from '../../components/ContentPage/Index';
-import AppBar from '../../components/AppBar/Index';
+import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -18,8 +17,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
 }));
-export default function Index(props) {
+export default function Index({ data }) {
   const classes = useStyles();
+  const history = useHistory();
+  const { number, numberOfVerses, name, revelation, tafsir } = data;
   return (
     <Card
       style={{
@@ -30,8 +31,15 @@ export default function Index(props) {
       }}
     >
       <CardContent>
-        <Grid container direction="column" justify="space-evenly" spacing={2.5}>
-          <Grid container item justify="center" alignItems="center">
+        <Grid container direction="column" justify="space-evenly" spacing={3}>
+          <Grid
+            style={{ cursor: 'pointer' }}
+            container
+            item
+            justify="center"
+            alignItems="center"
+            onClick={() => history.push(`al-quran/${name.transliteration.id}`)}
+          >
             <Grid
               item
               xs={8}
@@ -40,9 +48,11 @@ export default function Index(props) {
               alignItems="flex-start"
               direction="column"
             >
-              <Typography>1. Al-Fatihah</Typography>
+              <Typography title="Click to read surah">
+                {number}. {name.transliteration.id}
+              </Typography>
               <Typography style={{ fontSize: '12px' }}>
-                Pembukaan | Makkiyah | 7 Ayat
+                {name.translation.id} | {revelation.id} | {numberOfVerses} Ayat
               </Typography>
             </Grid>
             <Grid
@@ -53,6 +63,7 @@ export default function Index(props) {
               alignItems="flex-start"
             >
               <Typography
+                title="Click to read surah"
                 variant="h3"
                 component="h3"
                 style={{
@@ -60,7 +71,7 @@ export default function Index(props) {
                   fontSize: '25px',
                 }}
               >
-                الفاتحة
+                {name.short}
               </Typography>
             </Grid>
           </Grid>
@@ -83,19 +94,7 @@ export default function Index(props) {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography paragraph>
-                  Surat Al Faatihah (Pembukaan) yang diturunkan di Mekah dan
-                  terdiri dari 7 ayat adalah surat yang pertama-tama diturunkan
-                  dengan lengkap diantara surat-surat yang ada dalam Al Quran
-                  dan termasuk golongan surat Makkiyyah. Surat ini disebut Al
-                  Faatihah (Pembukaan), karena dengan surat inilah dibuka dan
-                  dimulainya Al Quran. Dinamakan Ummul Quran (induk Al Quran)
-                  atau Ummul Kitaab (induk Al Kitaab) karena dia merupakan induk
-                  dari semua isi Al Quran, dan karena itu diwajibkan membacanya
-                  pada tiap-tiap sembahyang. Dinamakan pula As Sab'ul matsaany
-                  (tujuh yang berulang-ulang) karena ayatnya tujuh dan dibaca
-                  berulang-ulang dalam sholat.
-                </Typography>
+                <Typography paragraph>{tafsir.id}</Typography>
               </AccordionDetails>
             </Accordion>
           </Grid>

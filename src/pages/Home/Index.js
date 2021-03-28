@@ -60,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
     padding: theme.spacing(0, 0, 0, 1),
     margin: 0,
     zIndex: 100,
@@ -174,7 +173,6 @@ export default function Drawer() {
               <ChevronLeftIcon />
             </IconButton>
           </div>
-          {/* <Divider /> */}
           <List>
             {listSurat.map((item, index) => (
               <ListItem button onClick={() => console.log(item.number)}>

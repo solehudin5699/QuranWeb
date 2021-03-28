@@ -6,7 +6,7 @@ import Hadist from './pages/Hadist/Index';
 import Doa from './pages/Doa/Index';
 import Surat from './pages/Surat/Index';
 
-export default function Drawer() {
+export default function AppRouter() {
   return (
     <>
       <Router>
