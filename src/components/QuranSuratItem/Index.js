@@ -6,6 +6,8 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getSpecificSuratAPI } from '../../redux/actions/quran';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -21,6 +23,10 @@ export default function Index({ data }) {
   const classes = useStyles();
   const history = useHistory();
   const { number, numberOfVerses, name, revelation, tafsir } = data;
+  const dispatch = useDispatch();
+  const handleFetchSurat = () => {
+    dispatch(getSpecificSuratAPI(number));
+  };
   return (
     <Card
       style={{
@@ -38,7 +44,12 @@ export default function Index({ data }) {
             item
             justify="center"
             alignItems="center"
-            onClick={() => history.push(`al-quran/${name.transliteration.id}`)}
+            onClick={() => {
+              handleFetchSurat();
+              history.push(
+                `/al-quran/surat?name=${name.transliteration.id}&suratNumber=${number}`
+              );
+            }}
           >
             <Grid
               item

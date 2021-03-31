@@ -15,7 +15,7 @@ export default function AppRouter() {
           <Route exact path="/al-quran" component={AlQuran} />
           <Route exact path="/hadist" component={Hadist} />
           <Route exact path="/doa" component={Doa} />
-          <Route path="/al-quran/:surat" component={Surat} />
+          <Route path="/al-quran/surat" component={Surat} />
         </div>
       </Router>
     </>
