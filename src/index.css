@@ -49,3 +49,7 @@ code {
   font-family: 'Amiri Regular';
   src: url('./assets/fonts/Amiri-Regular.ttf');
 }
+@font-face {
+  font-family: 'Noore Hidayat';
+  src: url('./assets/fonts/noorehidayat.ttf');
+}

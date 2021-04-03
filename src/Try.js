@@ -11,7 +11,6 @@ export default function Try() {
         autoPlay
         src="https://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/8"
         onPlay={(e) => console.log(refAudio)}
-        // other props here
       />
       <div>
         <button onClick={(e) => refAudio.current.togglePlay(e)}>Play</button>

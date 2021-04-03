@@ -1,31 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  AppBar,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  CssBaseline,
-  SwipeableDrawer,
-  Grid,
-  Input,
-  InputAdornment,
-  Card,
-  CardContent,
-  Typography,
-} from '@material-ui/core';
+import { Grid, Card, CardContent, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import {
-  Menu as MenuIcon,
-  Book as BookIcon,
-  ChevronLeft as ChevronLeftIcon,
-  Search as SearchIcon,
-} from '@material-ui/icons';
 import { useLocation } from 'react-router-dom';
 import { surat } from '../../surat';
+import Drawer from '../../components/Drawer/Index';
+import ContentPage from '../../components/ContentPage/Index';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -96,96 +76,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Drawer() {
+export default function Index() {
   const classes = useStyles();
-  const location = useLocation();
-  console.log(location);
-  const [drawer, setDrawer] = useState(false);
-  const [listSurat, setListSurat] = useState([]);
-  const handleSearch = (e) => {
-    let result = surat.filter((item) =>
-      item.name
-        .toString()
-        .toLowerCase()
-        .includes(e.target.value.toString().toLowerCase())
-    );
-    setListSurat(result);
-  };
-  useEffect(() => {
-    setListSurat(surat);
-  }, []);
   const history = useHistory();
   return (
-    <div>
-      <React.Fragment>
-        <CssBaseline />
-        <AppBar className={classes.appBar} position="fixed">
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={() => setDrawer(true)}
-              edge="start"
-              className={classes.menuButton}
-              style={{ outline: 'none' }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap>
-              Mari Baca Al-Quran
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <SwipeableDrawer
-          anchor="left"
-          open={drawer}
-          onClose={() => setDrawer(false)}
-          onOpen={() => setDrawer(true)}
-          className={classes.drawer}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.searchBox}>
-            <Grid
-              container
-              direction="row"
-              justifyContent="flex-start"
-              alignItems="center"
-              style={{ flex: 0.9 }}
-            >
-              <Input
-                placeholder="Cari surat"
-                className={classes.inputSearch}
-                disableUnderline
-                onChange={(e) => handleSearch(e)}
-                endAdornment={
-                  <InputAdornment position="start">
-                    <SearchIcon style={{ color: 'rgb(71, 93, 235, 1)' }} />
-                  </InputAdornment>
-                }
-              />
-            </Grid>
-            <IconButton
-              onClick={() => setDrawer(false)}
-              style={{ color: '#000000', outline: 'none', flex: 0.1 }}
-            >
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <List>
-            {listSurat.map((item, index) => (
-              <ListItem button onClick={() => console.log(item.number)}>
-                <ListItemIcon>
-                  <BookIcon style={{ color: 'rgb(71, 93, 235, 1)' }} />
-                </ListItemIcon>
-                <ListItemText primary={item.name} />
-              </ListItem>
-            ))}
-          </List>
-        </SwipeableDrawer>
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
+    <>
+      <Drawer pageName="Mari Baca Al-Qur'an">
+        <ContentPage>
           <Grid container justify="center" alignItems="center" spacing={2}>
             <Grid item xs={6} sm={4} container justify="center" align="center">
               <Card
@@ -227,8 +124,8 @@ export default function Drawer() {
               </Card>
             </Grid>
           </Grid>
-        </main>
-      </React.Fragment>
-    </div>
+        </ContentPage>
+      </Drawer>
+    </>
   );
 }
