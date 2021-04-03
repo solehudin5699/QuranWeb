@@ -20,6 +20,8 @@ import {
   Input,
   InputAdornment,
 } from '@material-ui/core';
+import Loading from '../../components/Loading/Index';
+
 const useStyles = makeStyles((theme) => ({
   inputSearch: {
     backgroundColor: '#FFFFFF',
@@ -125,9 +127,13 @@ export default function Index() {
         }}
       >
         <PageContent>
-          {listSurat.map((surat, index) => {
-            return <QuranSuratItem data={surat} key={index.toString()} />;
-          })}
+          {isLoading ? (
+            <Loading />
+          ) : (
+            listSurat.map((surat, index) => {
+              return <QuranSuratItem data={surat} key={index.toString()} />;
+            })
+          )}
         </PageContent>
       </Drawer>
     </>
