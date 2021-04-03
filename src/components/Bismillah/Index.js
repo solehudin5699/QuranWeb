@@ -16,38 +16,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Index({ ayat }) {
   const classes = useStyles();
-  let refAudio = [];
-  refAudio[ayat.number.inSurah] = createRef();
+  let refToAudio = createRef();
   return (
-    <>
+    <div style={{ display: 'grid', placeItems: 'center', width: '100%' }}>
       <Card
         style={{
           marginBottom: '10px',
           borderRadius: '30px',
           paddingLeft: '10px',
           paddingRight: '10px',
+          width: '100%',
         }}
       >
         <CardContent>
-          <Grid container direction="column" spacing={1}>
+          <Grid container direction="column" spacing={0}>
             <Grid container item direction="row" alignItems="center">
-              <Chip
-                color="primary"
-                size="medium"
-                label={ayat.number.inSurah}
-                style={{
-                  paddingLeft: '5px',
-                  paddingRight: '5px',
-                }}
-              />
-              <IconButton
-                onClick={(e) =>
-                  refAudio[ayat.number.inSurah].current.togglePlay(e)
-                }
-              >
+              <IconButton onClick={(e) => refToAudio.current.togglePlay(e)}>
                 <PlayCircleFilledWhiteIcon fontSize="large" color="primary" />
               </IconButton>
-              <Typography color="primary">Play</Typography>
+              Play
             </Grid>
             <Grid container item direction="row">
               <Typography paragraph className={classes.styleArabic}>
@@ -55,19 +42,14 @@ export default function Index({ ayat }) {
               </Typography>
             </Grid>
             <Grid container item direction="row">
-              <Typography color="primary" paragraph>
-                {ayat.translation.id}
-              </Typography>
+              <Typography paragraph>{ayat.translation.id}</Typography>
             </Grid>
           </Grid>
         </CardContent>
       </Card>
       <div style={{ display: 'none' }}>
-        <AudioPlayer
-          ref={refAudio[ayat.number.inSurah]}
-          src={ayat.audio.secondary[0]}
-        />
+        <AudioPlayer ref={refToAudio} src={ayat.audio.secondary[0]} />
       </div>
-    </>
+    </div>
   );
 }

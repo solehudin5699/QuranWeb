@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
-import Try from './Try';
+import Loading from './components/Loading/Index';
 
 const App = () => {
   return (

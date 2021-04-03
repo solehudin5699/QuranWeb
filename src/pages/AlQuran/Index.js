@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PageContent from '../../components/ContentPage/Index';
-import AppBar from '../../components/AppBar/Index';
 import QuranSuratItem from '../../components/QuranSuratItem/Index';
 import { useDispatch, useSelector } from 'react-redux';
-import { getListSuratAPI } from '../../redux/actions/quran';
+import {
+  getListSuratAPI,
+  getSpecificSuratAPI,
+} from '../../redux/actions/quran';
 import { surat } from '../../surat';
 import Drawer from '../../components/Drawer/Index';
 import { makeStyles } from '@material-ui/core/styles';
 import { Book as BookIcon, Search as SearchIcon } from '@material-ui/icons';
+import { useHistory } from 'react-router-dom';
 import {
   List,
   ListItem,
@@ -40,10 +43,14 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
+  list: {
+    color: '#ffffff',
+  },
 }));
 export default function Index() {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const history = useHistory();
   const { listSurat } = useSelector((state) => state.quran);
   const { isLoading } = useSelector((state) => state.loading);
   useEffect(() => {
@@ -64,6 +71,12 @@ export default function Index() {
   useEffect(() => {
     setMenuSurat(surat);
   }, []);
+  const handleFetchSurat = (suratName, suratNumber) => {
+    dispatch(getSpecificSuratAPI(suratNumber));
+    history.push(
+      `/al-quran/surat?name=${suratName}&suratNumber=${suratNumber}`
+    );
+  };
   return (
     <>
       <Drawer
@@ -91,11 +104,17 @@ export default function Index() {
                   />
                 </Grid>
               </div>
-              <List>
+              <List className={classes.list}>
                 {menuSurat.map((item, index) => (
-                  <ListItem button onClick={() => console.log(item.number)}>
+                  <ListItem
+                    key={index.toString()}
+                    button
+                    onClick={() => {
+                      handleFetchSurat(item.name, item.number);
+                    }}
+                  >
                     <ListItemIcon>
-                      <BookIcon style={{ color: 'rgb(71, 93, 235, 1)' }} />
+                      <BookIcon style={{ color: '#ffffff' }} />
                     </ListItemIcon>
                     <ListItemText primary={item.name} />
                   </ListItem>

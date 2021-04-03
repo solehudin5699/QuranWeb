@@ -35,7 +35,7 @@ export const getSpecificSuratAPI = (param) => {
         dispatch(loading(false));
       })
       .catch((err) => {
-        dispatch(getSpecificSurat([]));
+        dispatch(getSpecificSurat({}));
         dispatch(loading(false));
       });
   };

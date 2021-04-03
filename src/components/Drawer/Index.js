@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor: 'rgb(71, 93, 235, 1)',
+    backgroundColor: 'rgba(71, 93, 235, 1)',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -30,9 +30,17 @@ const useStyles = makeStyles((theme) => ({
     width: 270,
     flexShrink: 0,
     height: '100%',
+    backgroundColor: 'rgba(71, 93, 235, 0.5)',
   },
   drawerPaper: {
     width: 270,
+    backgroundColor: 'rgba(71, 93, 235, 0.5)',
+  },
+  list: {
+    color: '#ffffff',
+  },
+  icon: {
+    color: '#ffffff',
   },
 }));
 
@@ -71,34 +79,34 @@ export default function Index(props) {
             paper: classes.drawerPaper,
           }}
         >
-          <List>
+          <List className={classes.list}>
             <ListItem button onClick={() => history.push('/')}>
               <ListItemIcon>
-                <LabelIcon style={{ color: 'rgb(71, 93, 235, 1)' }} />
+                <LabelIcon className={classes.icon} />
               </ListItemIcon>
               <ListItemText primary="Beranda" />
             </ListItem>
             <ListItem button onClick={() => history.push('al-quran')}>
               <ListItemIcon>
-                <LabelIcon style={{ color: 'rgb(71, 93, 235, 1)' }} />
+                <LabelIcon className={classes.icon} />
               </ListItemIcon>
               <ListItemText primary="Al-Quran" />
             </ListItem>
             <ListItem button onClick={() => history.push('hadist')}>
               <ListItemIcon>
-                <LabelIcon style={{ color: 'rgb(71, 93, 235, 1)' }} />
+                <LabelIcon className={classes.icon} />
               </ListItemIcon>
               <ListItemText primary="Hadist" />
             </ListItem>
             <ListItem button onClick={() => history.push('doa')}>
               <ListItemIcon>
-                <LabelIcon style={{ color: 'rgb(71, 93, 235, 1)' }} />
+                <LabelIcon className={classes.icon} />
               </ListItemIcon>
               <ListItemText primary="Do'a" />
             </ListItem>
             <ListItem button onClick={() => history.push('tahlil')}>
               <ListItemIcon>
-                <LabelIcon style={{ color: 'rgb(71, 93, 235, 1)' }} />
+                <LabelIcon className={classes.icon} />
               </ListItemIcon>
               <ListItemText primary="Tahlil" />
             </ListItem>

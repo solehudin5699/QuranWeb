@@ -3,14 +3,15 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
     padding: theme.spacing(1.5),
     textAlign: 'justify',
+    backgroundColor: 'rgba(71, 93, 235, 0.5)',
   },
   toolbar: theme.mixins.toolbar,
 }));
 export default function Index(props) {
   const classes = useStyles();
+  console.log(classes.toolbar);
   return (
     <>
       <main className={classes.content}>

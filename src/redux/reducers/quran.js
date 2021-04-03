@@ -2,7 +2,7 @@ import { actions } from '../type/index';
 
 const initialState = {
   listSurat: [],
-  specificSurat: [],
+  specificSurat: {},
 };
 
 const dataQuranReducers = (prevState = initialState, action) => {

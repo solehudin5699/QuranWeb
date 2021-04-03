@@ -4,7 +4,8 @@ import AppBar from '../../components/AppBar/Index';
 import PageContent from '../../components/ContentPage/Index';
 import AyatSuratItem from '../../components/AyatSuratItem/Index';
 import { useSelector } from 'react-redux';
-import { Grid } from '@material-ui/core';
+import Loading from '../../components/Loading/Index';
+import Bismillah from '../../components/Bismillah/Index';
 
 export default function Index() {
   function useQuery() {
@@ -18,15 +19,17 @@ export default function Index() {
       <AppBar pageName={`Surat ${query.get('name')}`} />
       <PageContent>
         {isLoading ? (
-          <h1>Loading</h1>
+          <Loading loading={isLoading} />
         ) : (
-          specificSurat.verses.map((item, index) => {
-            return <AyatSuratItem key={index.toString()} ayat={item} />;
-          })
+          <>
+            {specificSurat.preBismillah && (
+              <Bismillah ayat={specificSurat.preBismillah} />
+            )}
+            {specificSurat.verses?.map((item, index) => {
+              return <AyatSuratItem key={index.toString()} ayat={item} />;
+            })}
+          </>
         )}
-        {/* {specificSurat.verses.map((item, index) => {
-          return <AyatSuratItem key={index.toString()} ayat={item} />;
-        })} */}
       </PageContent>
     </>
   );
