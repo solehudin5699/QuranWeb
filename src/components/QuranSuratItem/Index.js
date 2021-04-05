@@ -60,7 +60,7 @@ export default function Index({ data }) {
               direction="column"
             >
               <Typography title="Click to read surah">
-                {number}. {name.transliteration.id}
+                {number}. QS. {name.transliteration.id}
               </Typography>
               <Typography style={{ fontSize: '12px' }}>
                 {name.translation.id} | {revelation.id} | {numberOfVerses} Ayat

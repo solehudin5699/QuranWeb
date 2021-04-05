@@ -6,6 +6,10 @@ import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite'
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import IconButton from '@material-ui/core/IconButton';
 import AudioPlayer from 'react-h5-audio-player';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
+
 const useStyles = makeStyles((theme) => ({
   styleArabic: {
     fontFamily: 'MADDINA',
@@ -13,17 +17,21 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '200%',
     textAlign: 'right',
     width: '100%',
+    marginTop: '10px',
   },
   play: {
     fontSize: '12px',
     marginLeft: '-10px',
   },
 }));
-export default function Index({ ayat }) {
+export default function Index({ ayat, surat }) {
   const classes = useStyles();
   let refAudio = [];
+  let refCopy = [];
   refAudio[ayat.number.inSurah] = createRef();
+  refCopy[ayat.number.inSurah] = createRef();
   const [isPlay, setPlay] = useState(false);
+  const [isCopied, setCopy] = useState(false);
   return (
     <>
       <Card
@@ -36,7 +44,13 @@ export default function Index({ ayat }) {
       >
         <CardContent>
           <Grid container direction="column" spacing={0}>
-            <Grid container item direction="row" alignItems="center">
+            <Grid
+              container
+              item
+              direction="row"
+              alignItems="center"
+              justify="flex-start"
+            >
               <Chip
                 color="primary"
                 size="medium"
@@ -44,6 +58,7 @@ export default function Index({ ayat }) {
                 style={{
                   paddingLeft: '5px',
                   paddingRight: '5px',
+                  marginRight: '15px',
                 }}
               />
               <IconButton
@@ -52,13 +67,28 @@ export default function Index({ ayat }) {
                 }
               >
                 {isPlay ? (
-                  <PauseCircleOutlineIcon fontSize="large" color="primary" />
+                  <PauseCircleOutlineIcon fontSize="small" color="primary" />
                 ) : (
-                  <PlayCircleFilledWhiteIcon fontSize="large" color="primary" />
+                  <PlayCircleFilledWhiteIcon fontSize="small" color="primary" />
+                )}
+              </IconButton>
+              {/* <Typography className={classes.play} color="primary">
+                {isPlay ? 'Pause' : 'Play'}
+              </Typography> */}
+              <IconButton
+                onClick={(e) => refCopy[ayat.number.inSurah].current.onClick()}
+              >
+                {isCopied ? (
+                  <FileCopyOutlinedIcon
+                    style={{ fontSize: '15px' }}
+                    color="primary"
+                  />
+                ) : (
+                  <FileCopyIcon style={{ fontSize: '15px' }} color="primary" />
                 )}
               </IconButton>
               <Typography className={classes.play} color="primary">
-                {isPlay ? 'Pause' : 'Play'}
+                {isCopied ? 'Copied' : 'Copy'}
               </Typography>
             </Grid>
             <Grid container item direction="row">
@@ -82,6 +112,14 @@ export default function Index({ ayat }) {
           onPause={() => setPlay(false)}
           onEnded={() => setPlay(false)}
         />
+        <CopyToClipboard
+          ref={refCopy[ayat.number.inSurah]}
+          text={`QS.${surat}:${ayat.number.inSurah}\n\n${ayat.text.arab}\n\n${ayat.translation.id}
+          `}
+          onCopy={() => setCopy(true)}
+        >
+          <button>Copy to clipboard</button>
+        </CopyToClipboard>
       </div>
     </>
   );

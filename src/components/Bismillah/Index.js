@@ -4,6 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import IconButton from '@material-ui/core/IconButton';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import AudioPlayer from 'react-h5-audio-player';
 const useStyles = makeStyles((theme) => ({
   styleArabic: {
@@ -21,7 +24,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Index({ ayat }) {
   const classes = useStyles();
   let refToAudio = createRef();
+  let refToCopy = createRef();
   const [isPlay, setPlay] = useState(false);
+  const [isCopied, setCopy] = useState(false);
   return (
     <div style={{ display: 'grid', placeItems: 'center', width: '100%' }}>
       <Card
@@ -38,13 +43,26 @@ export default function Index({ ayat }) {
             <Grid container item direction="row" alignItems="center">
               <IconButton onClick={(e) => refToAudio.current.togglePlay(e)}>
                 {isPlay ? (
-                  <PauseCircleOutlineIcon fontSize="large" color="primary" />
+                  <PauseCircleOutlineIcon fontSize="small" color="primary" />
                 ) : (
-                  <PlayCircleFilledWhiteIcon fontSize="large" color="primary" />
+                  <PlayCircleFilledWhiteIcon fontSize="small" color="primary" />
+                )}
+              </IconButton>
+              {/* <Typography className={classes.play} color="primary">
+                {isPlay ? 'Pause' : 'Play'}
+              </Typography> */}
+              <IconButton onClick={(e) => refToCopy.current.onClick()}>
+                {isCopied ? (
+                  <FileCopyOutlinedIcon
+                    style={{ fontSize: '15px' }}
+                    color="primary"
+                  />
+                ) : (
+                  <FileCopyIcon style={{ fontSize: '15px' }} color="primary" />
                 )}
               </IconButton>
               <Typography className={classes.play} color="primary">
-                {isPlay ? 'Pause' : 'Play'}
+                {isCopied ? 'Copied' : 'Copy'}
               </Typography>
             </Grid>
             <Grid container item direction="row">
@@ -66,6 +84,14 @@ export default function Index({ ayat }) {
           onPause={() => setPlay(false)}
           onEnded={() => setPlay(false)}
         />
+        <CopyToClipboard
+          ref={refToCopy}
+          text={`${ayat.text.arab}\n\n${ayat.translation.id}
+          `}
+          onCopy={() => setCopy(true)}
+        >
+          <button>Copy to clipboard</button>
+        </CopyToClipboard>
       </div>
     </div>
   );

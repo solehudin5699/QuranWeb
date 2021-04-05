@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     cursor: 'pointer',
-    backgroundColor: 'green',
+    backgroundColor: 'rgb(71, 93, 235)',
   },
   menuItem: {
     fontFamily: 'Poppins',

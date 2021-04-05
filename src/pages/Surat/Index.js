@@ -26,7 +26,13 @@ export default function Index() {
               <Bismillah ayat={specificSurat.preBismillah} />
             )}
             {specificSurat.verses?.map((item, index) => {
-              return <AyatSuratItem key={index.toString()} ayat={item} />;
+              return (
+                <AyatSuratItem
+                  key={index.toString()}
+                  ayat={item}
+                  surat={query.get('name')}
+                />
+              );
             })}
           </>
         )}
