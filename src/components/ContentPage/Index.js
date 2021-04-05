@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Index(props) {
   const classes = useStyles();
-  console.log(classes.toolbar);
   return (
     <>
       <main className={classes.content}>

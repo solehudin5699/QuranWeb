@@ -32,7 +32,7 @@ export default function Index({ ayat }) {
       <Card
         style={{
           marginBottom: '10px',
-          borderRadius: '30px',
+          borderRadius: '10px',
           paddingLeft: '10px',
           paddingRight: '10px',
           width: '100%',
@@ -61,9 +61,11 @@ export default function Index({ ayat }) {
                   <FileCopyIcon style={{ fontSize: '15px' }} color="primary" />
                 )}
               </IconButton>
-              <Typography className={classes.play} color="primary">
-                {isCopied ? 'Copied' : 'Copy'}
-              </Typography>
+              {isCopied && (
+                <Typography className={classes.play} color="primary">
+                  Copied
+                </Typography>
+              )}
             </Grid>
             <Grid container item direction="row">
               <Typography paragraph className={classes.styleArabic}>
@@ -71,7 +73,9 @@ export default function Index({ ayat }) {
               </Typography>
             </Grid>
             <Grid container item direction="row">
-              <Typography paragraph>{ayat.translation.id}</Typography>
+              <Typography color="primary" paragraph>
+                {ayat.translation.id}
+              </Typography>
             </Grid>
           </Grid>
         </CardContent>
