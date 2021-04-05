@@ -67,7 +67,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     cursor: 'pointer',
-    backgroundColor: 'rgb(71, 93, 235)',
+    backgroundImage:
+      'linear-gradient(to bottom, #475deb, #0091fc, #3ab9fa, #99dcf3)',
   },
   menuItem: {
     fontFamily: 'Poppins',
