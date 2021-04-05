@@ -1,7 +1,7 @@
 # Qur'an Web <img src="https://img.shields.io/badge/Built%20with-ReactJs-61dbfb?style=popout&logo=react">
 
 <div align="center">
-    <img width="250" src="./public/logo512.png">
+    <img width="250" src="./public/favicon.jpeg">
 </div>
 
 ## Contents
@@ -26,7 +26,7 @@ The web for reading the Holy Quran. It can also be used to listen to verse by ve
 ## Features
 
 - [x] Al-Qur'an
-- [ ] Hadist, Do'a, & Tahlil (need API && more development)
+- [ ] Hadist, Do'a, & Tahlil (need API & more development)
 
 ## Requirements for Development
 
