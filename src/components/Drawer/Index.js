@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     width: 270,
     flexShrink: 0,
     height: '100%',
-    backgroundColor: 'rgba(71, 93, 235, 0.5)',
   },
   drawerPaper: {
     width: 270,
