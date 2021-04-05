@@ -11,6 +11,7 @@
 - [Features](#features)
 - [Requirements](#requirements-for-development)
 - [Installation](#installation-for-development)
+- [API Source](#api-source)
 
 ## Description
 
@@ -41,3 +42,7 @@ The web for reading the Holy Quran. It can also be used to listen to verse by ve
 3. Open the folder and type `yarn install` for install dependencies
 4. Type `yarn start` in terminal for running this project.
 5. If you want to build, type `yarn run build`.
+
+## API Source
+
+- [`api.quran.sutanlab.id`](https://github.com/sutanlab/quran-api)
