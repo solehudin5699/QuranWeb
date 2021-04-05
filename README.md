@@ -46,9 +46,3 @@ The web for reading the Holy Quran. It can also be used to listen to verse by ve
 ## API Source
 
 - [`api.quran.sutanlab.id`](https://github.com/sutanlab/quran-api)
-
-## Demo (temporary)
-
-<a href="https://quranweb.netlify.app/al-quran">
-  <img src="https://img.shields.io/badge/Qur'anWeb-Link%20Demo-blue.svg?style=popout"/>
-</a>
