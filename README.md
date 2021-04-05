@@ -26,7 +26,7 @@ The web for reading the Holy Quran. It can also be used to listen to verse by ve
 ## Features
 
 - [x] Al-Qur'an
-- [ ] Hadist, Do'a, & Tahlil (need API)
+- [ ] Hadist, Do'a, & Tahlil (need API && more development)
 
 ## Requirements for Development
 
