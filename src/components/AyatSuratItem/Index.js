@@ -1,5 +1,13 @@
 import React, { createRef, useState } from 'react';
-import { Typography, Card, CardContent, Grid } from '@material-ui/core';
+import {
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
@@ -9,6 +17,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme) => ({
   styleArabic: {
@@ -23,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '12px',
     marginLeft: '-10px',
   },
+  heading: {
+    fontSize: theme.typography.pxToRem(12),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
 }));
 export default function Index({ ayat, surat }) {
   const classes = useStyles();
@@ -32,6 +45,7 @@ export default function Index({ ayat, surat }) {
   refCopy[ayat.number.inSurah] = createRef();
   const [isPlay, setPlay] = useState(false);
   const [isCopied, setCopy] = useState(false);
+  console.log(ayat);
   return (
     <>
       <Card
@@ -102,6 +116,41 @@ export default function Index({ ayat, surat }) {
               <Typography color="primary" paragraph>
                 {ayat.translation.id}
               </Typography>
+            </Grid>
+            <Grid
+              item
+              container
+              style={{ marginBottom: '-20px' }}
+              direction="column"
+              alignItems="center"
+            >
+              <Accordion style={{ boxShadow: 'none' }}>
+                <Grid item>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    style={{ marginRight: '-15px' }}
+                  >
+                    <Typography
+                      style={{
+                        textAlign: 'right',
+                        width: '100%',
+                      }}
+                      className={classes.heading}
+                    >
+                      Tafsir
+                    </Typography>
+                  </AccordionSummary>
+                </Grid>
+                <AccordionDetails>
+                  <Grid container direction="column">
+                    {ayat.tafsir.id.long.split('\n\n').map((item) => (
+                      <Typography paragraph>{item}</Typography>
+                    ))}
+                  </Grid>
+                </AccordionDetails>
+              </Accordion>
             </Grid>
           </Grid>
         </CardContent>

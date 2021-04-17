@@ -110,7 +110,7 @@ export default function Index(props) {
               <ListItemText primary="Tahlil" />
             </ListItem>
           </List>
-          {props.customMenu && props.customMenu()}
+          {props.customMenu && props.customMenu(drawer)}
         </SwipeableDrawer>
         {props.children}
       </React.Fragment>

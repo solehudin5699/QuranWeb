@@ -30,7 +30,7 @@ export default function Index({ data }) {
   return (
     <Card
       style={{
-        marginBottom: '10px',
+        // marginBottom: '10px',
         borderRadius: '10px',
         paddingLeft: '5px',
         paddingRight: '5px',
@@ -63,7 +63,10 @@ export default function Index({ data }) {
                 {number}. QS. {name.transliteration.id}
               </Typography>
               <Typography style={{ fontSize: '12px' }}>
-                {name.translation.id} | {revelation.id} | {numberOfVerses} Ayat
+                {name.translation.id}
+              </Typography>
+              <Typography style={{ fontSize: '12px' }}>
+                {revelation.id} | {numberOfVerses} Ayat
               </Typography>
             </Grid>
             <Grid

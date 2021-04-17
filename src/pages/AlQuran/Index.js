@@ -62,13 +62,15 @@ export default function Index() {
   }, []);
   const [menuSurat, setMenuSurat] = useState([]);
   const handleSearch = (e) => {
-    let result = surat.filter((item) =>
-      item.name
-        .toString()
-        .toLowerCase()
-        .includes(e.target.value.toString().toLowerCase())
-    );
-    setMenuSurat(result);
+    if (e.key === 'Enter') {
+      let result = surat.filter((item) =>
+        item.name
+          .toString()
+          .toLowerCase()
+          .includes(e.target.value.toString().toLowerCase())
+      );
+      setMenuSurat(result);
+    }
   };
   useEffect(() => {
     setMenuSurat(surat);
@@ -83,21 +85,23 @@ export default function Index() {
     <>
       <Drawer
         pageName="Al-Qur'an"
-        customMenu={() => {
+        customMenu={(drawer) => {
+          if (!drawer) setMenuSurat(surat);
           return (
             <>
               <div className={classes.searchBox}>
                 <Grid
                   container
                   direction="row"
-                  justifyContent="flex-start"
+                  justify="flex-start"
                   alignItems="center"
                 >
                   <Input
+                    type="search"
                     placeholder="Cari surat"
                     className={classes.inputSearch}
                     disableUnderline
-                    onChange={(e) => handleSearch(e)}
+                    onKeyPress={(e) => handleSearch(e)}
                     endAdornment={
                       <InputAdornment position="start">
                         <SearchIcon style={{ color: 'rgb(71, 93, 235, 1)' }} />
@@ -130,9 +134,17 @@ export default function Index() {
           {isLoading ? (
             <Loading />
           ) : (
-            listSurat.map((surat, index) => {
-              return <QuranSuratItem data={surat} key={index.toString()} />;
-            })
+            <>
+              <Grid container spacing={1}>
+                {listSurat.map((surat, index) => {
+                  return (
+                    <Grid item md={4} sm={6} xs={12}>
+                      <QuranSuratItem data={surat} key={index.toString()} />
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </>
           )}
         </PageContent>
       </Drawer>
