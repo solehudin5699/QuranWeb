@@ -12,6 +12,7 @@
 - [Requirements](#requirements-for-development)
 - [Installation](#installation-for-development)
 - [API Source](#api-source)
+- [Demo](#demo)
 
 ## Description
 
@@ -32,7 +33,7 @@ The web for reading the Holy Quran. It can also be used to listen to verse by ve
 ## Requirements for Development
 
 - [`Node Js`](https://nodejs.org/en/)
-- [`npm`](https://www.npmjs.com/get-npm)
+- [`yarn`](https://yarnpkg.com/)
 - [`ReactJs`](https://reactjs.org/)
 
 ## Installation for Development
@@ -46,3 +47,9 @@ The web for reading the Holy Quran. It can also be used to listen to verse by ve
 ## API Source
 
 - [`api.quran.sutanlab.id`](https://github.com/sutanlab/quran-api)
+
+## Demo
+
+<a href="https://quranweb.netlify.app/">
+  <img src="https://img.shields.io/badge/Qur'anWeb-Link%20Demo-blue.svg?style=popout"/>
+</a>

@@ -7,7 +7,7 @@ export default function Index() {
     <>
       <AppBar pageName="Hadist" />
       <PageContent>
-        <h1>Hadis</h1>
+        <h1>Hadist</h1>
       </PageContent>
     </>
   );
