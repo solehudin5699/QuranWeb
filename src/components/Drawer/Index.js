@@ -78,7 +78,7 @@ export default function Index(props) {
             paper: classes.drawerPaper,
           }}
         >
-          <List className={classes.list}>
+          {/* <List className={classes.list}>
             <ListItem button onClick={() => history.push('/')}>
               <ListItemIcon>
                 <LabelIcon className={classes.icon} />
@@ -109,16 +109,28 @@ export default function Index(props) {
               </ListItemIcon>
               <ListItemText primary="Tahlil" />
             </ListItem>
-          </List>
+          </List> */}
           {props.customMenu && props.customMenu(drawer)}
+          <List
+            style={{
+              borderTop: '1px solid #FFFFFF',
+              borderTopColor: '#FFFFFF',
+            }}
+          >
+            <ListItem button>
+              <ListItemText
+                primary="Created By Solehudin"
+                style={{
+                  color: '#FFFFFF',
+                  textAlign: 'center',
+                  fontSize: '9px',
+                }}
+              />
+            </ListItem>
+          </List>
         </SwipeableDrawer>
         {props.children}
       </React.Fragment>
     </div>
   );
 }
-
-Index.defaultProps = {
-  customMenu: null,
-  pageName: '',
-};
