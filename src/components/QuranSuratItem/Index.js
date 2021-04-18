@@ -107,7 +107,9 @@ export default function Index({ data }) {
                   Tafsir
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails>
+              <AccordionDetails
+                style={{ paddingLeft: '0px', paddingRight: '0px' }}
+              >
                 <Typography paragraph>{tafsir.id}</Typography>
               </AccordionDetails>
             </Accordion>

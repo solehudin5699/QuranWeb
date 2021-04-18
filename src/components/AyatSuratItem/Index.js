@@ -143,7 +143,9 @@ export default function Index({ ayat, surat }) {
                     </Typography>
                   </AccordionSummary>
                 </Grid>
-                <AccordionDetails>
+                <AccordionDetails
+                  style={{ paddingLeft: '0px', paddingRight: '0px' }}
+                >
                   <Grid container direction="column">
                     {ayat.tafsir.id.long.split('\n\n').map((item) => (
                       <Typography paragraph>{item}</Typography>
